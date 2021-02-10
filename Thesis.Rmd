@@ -1,0 +1,77 @@
+---
+title: "Thesis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#Data
+Peru<-read.dta("/Users/mac/Desktop/wORKING dIRECTORY/Peru.dta")
+```
+
+## R Markdown
+
+
+
+```{r cars}
+#Load working directories
+library(dplyr) 
+library(tidyr) 
+library(ggplot2) 
+library(haven)
+library(ggdag)
+library(foreign)
+library(plm)
+library(rdd)
+library(summarytools)
+library(xtable)
+library(kableExtra) 
+library(stargazer)
+library(MatchIt)
+library(lmtest)
+library(foreign)
+library(naniar)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+#Subsetting data
+# select variables 
+
+newPeru<-Peru %>%
+  select("age_r", "gender_r", "b_q01a", "b_q01a_t","b_q02a","b_q02c","b_q10c","b_q01b","c_q01a","c_q01c","c_q02a", "d_q03","d_q14",
+         "d_q16a","d_q18a_t","f_q05a","f_q05b", "f_q07b","g_q04","g_q05a","g_q05c","g_q05d","g_q05e","g_q05g","g_q05h","g_q06","g_q07",
+         "g_q08","h_q04a","h_q04b","h_q05a","h_q05c","h_q05d","h_q05e","h_q05f","h_q05g","h_q05h","j_q03a","j_q03b","j_q06b","j_q07b",
+         "computerexperience","monthlyincpr","yearlyincpr","f_q01b","f_q02b","f_q02c","f_q02d","f_q02e","f_q03b","f_q04a","f_q04b",
+         "f_q05a","f_q05b","g_q01a","g_q02a","g_q02b","g_q02c","g_q02d","g_q03b","g_q03c","g_q03d","g_q03g","g_q03h","h_q01a","h_q01b",
+          "h_q01b_t","h_q01c","h_q01c_t","h_q01d","h_q01e","h_q01e_t","h_q01f","h_q01g","h_q01h","h_q02a","h_q02b","h_q02c","h_q02d",
+         "h_q03b","h_q03c","h_q03d","h_q03f","h_q03g","h_q03h","f_q05a","f_q05b","reg_tl2")
+#Dealing with NAs 
+#Visualization of variables and their misisng values 
+gg_miss_var(newPeru)
+#Percentage of missing total dataset
+pct_miss(newPeru)
+# Percentage of NAs per variable 
+
+n_miss(newPeru$b_q02c)#6317 
+n_miss(newPeru$b_q10c) #6632 
+n_miss(newPeru$c_q01c) #5120 
+n_miss(newPeru$c_q02a) #5424  
+n_miss(newPeru$d_q16a) #4683 
+n_miss(newPeru$g_q05a)#5281 
+n_miss(newPeru$g_q05c)#5281 
+n_miss(newPeru$g_q05d)#5281 
+n_miss(newPeru$g_q05e)#5281  
+n_miss(newPeru$g_q05g)#5281 
+n_miss(newPeru$g_q05h)#5281 
+n_miss(newPeru$g_q06)#5283 
+n_miss(newPeru$g_q07)#5281 
+n_miss(newPeru$g_q08)#5282 
+
+
+```
+
+
